@@ -1,41 +1,30 @@
 # The Vega programming language.
 
-Usage: `vega [command] [input] [flags] [args]`
+**Usage**: `vega [command] [input] [flags] [args]`
 
-```
-  vega version           Displays your current Vega version
-  vega help              Displays this message
-  vega new {name}        Creates a new project
-  vega init              Initializes a new Vega project in the current folder
-  vega tokenize {file}   Outputs the token list
-  vega parse             Outputs the VIR
-  vega test              Runs all the tests
-  vega build             Turns code into the target output's format
-  vega run               Runs the main file
-  vega print {code}      Evaluates the code and prints the result
-  vega repl              Starts a REPL session
-  vega add {pkg}         Adds a package to the project
-  vega remove {pkg}      Removes a package from the project
-  vega update            Updates the project
+```jade
+  vega version           Display your current Vega version
+  vega help              Display this message
+  vega new {name}        Create a new project
+  vega init              Initialize a new Vega project in the current folder
+  vega tokenize {file}   Output the token list
+  vega parse {file}      Output the VIR
+  vega test              Run all the tests
+  vega build             Turn code into the target output's format
+  vega run               Run the main file
+  vega eval {code}       Evaluate the code
+  vega print {code}      Evaluate the code and print the result
+  vega repl              Start a REPL session
+  vega add {pkg}         Add a package to the project
+  vega remove {pkg}      Remove a package from the project
+  vega update            Update dependencies listed in Vega.toml
 ```
 
 ## Global flags:
 ```
-  |--------------|---------------------------------|
-  | --no-flood   | Prints a counter instead of     |
-  | -n           | flooding the console with the   |
-  |              | same message over and over      |
-  |--------------|---------------------------------|
-  | --plain      | Disables ANSI escape codes,     |
-  | -p           | including colors                |
-  |--------------|---------------------------------|
-  | --debug      | Enable debug mode               |
-  | -d           |                                 |
-  |--------------|---------------------------------|
-  | --quiet      | Disable extra output            |
-  | -q           |                                 |
-  |--------------|---------------------------------|
-  | --workspace  | Set the workspace path          |
-  | -w           |                                 |
-  |--------------|---------------------------------|
+  -n, --no-flood    Print a counter instead of flooding the console
+  -p, --plain       Disable ANSI escape codes, including colors
+  -d, --debug       Enable debug mode
+  -q, --quiet       Disable extra output
+  -w, --workspace   Set the workspace path
 ```
