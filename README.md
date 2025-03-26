@@ -2,7 +2,7 @@
 
 **Usage**: `vega [command] [input] [flags] [args]`
 
-```jade
+```markdown
   vega version           Display your current Vega version
   vega help              Display this message
   vega new {name}        Create a new project

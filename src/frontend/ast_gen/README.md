@@ -1,1 +1,1 @@
-Where the Abstract Syntax Tree is converted into a Sunny Intermediate Representation file.
+Where the Abstract Syntax Tree is converted into a Vega Intermediate Representation file.

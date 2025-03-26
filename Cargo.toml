@@ -1,6 +1,6 @@
 [package]
-name = "sunny"
-version = "0.0.14"
+name = "vega"
+version = "0.0.1"
 edition = "2024"
 
 [dependencies]

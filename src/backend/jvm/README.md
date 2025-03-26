@@ -1,1 +1,1 @@
-Sunny for the Java Virtual Machine.
+Vega for the Java Virtual Machine.

@@ -1,1 +1,1 @@
-Sunny for the LLVM compiler infrastructure.
+Vega for the LLVM compiler infrastructure.

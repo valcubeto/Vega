@@ -1,1 +1,1 @@
-Sunny for WebAssembly.
+Vega for WebAssembly.

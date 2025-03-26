@@ -1,1 +1,1 @@
-Sunny for Android-based devices.
+Vega for Android-based devices.
