@@ -4,5 +4,8 @@ version = "0.0.1"
 edition = "2024"
 
 [dependencies]
+chrono = "0.4.40"
 hashbrown = "0.15.2"
 ifmt = "0.3.3"
+regex = "1.11.1"
+rustix = { version = "1.0.3", features = ["termios"] }
