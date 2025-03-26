@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 hashbrown = "0.15.2"
+ifmt = "0.3.3"

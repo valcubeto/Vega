@@ -1,3 +1,5 @@
+use peekmore::PeekMoreIterator;
+use super::tokens::Token;
 
 pub struct TokenStream<'a> {
   iter: PeekMoreIterator<Token>

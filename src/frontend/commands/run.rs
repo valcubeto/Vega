@@ -1,3 +1,5 @@
-pub fn run(ctx: Context) {
-  msg!("Running");
+use crate::frontend::context::Context;
+
+pub fn run_command(ctx: Context) {
+  // verbose!("Running");
 }
