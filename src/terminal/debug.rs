@@ -1,9 +1,11 @@
 use std::sync::atomic::Ordering::Relaxed;
 use chrono::Local;
-use crate::terminal::Stylize;
+use term_lab::styles::Stylize;
+use crate::globals::debug_enabled;
+use crate::context::Program;
 
-pub fn print_debug_msg(msg: &str, file: &str, line: u32, column: u32) {
-  if !crate::DEBUG.load(Relaxed) {
+pub fn print_debug_msg(msg: &str, ctx: &mut Program) {
+  if !debug_enabled() {
     return;
   }
   let path = format!("{}:{}:{}", file, line, column);
@@ -22,7 +24,7 @@ macro_rules! debug_msg {
 
 #[macro_export]
 macro_rules! debug {
-  ($($arg:expr),+ $(,)?) => {{ 
+  ($($arg:expr),+ $(,)?) => {{
     #[allow(unused_imports)]
     use $crate::terminal::Stylize;
     #[allow(unused_mut)]

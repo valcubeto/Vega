@@ -9,3 +9,4 @@ hashbrown = "0.15.2"
 ifmt = "0.3.3"
 regex = "1.11.1"
 rustix = { version = "1.0.3", features = ["termios"] }
+term-lab = "1.0.0"

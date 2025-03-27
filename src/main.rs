@@ -9,14 +9,17 @@ mod strings;
 mod frontend;
 // mod backend;
 mod globals;
+#[path = "context/context.rs"]
+mod context;
 
-use frontend::{ context::Program, commands };
+use frontend::commands;
+use context::Program;
 
 fn main() {
   let mut program = Program::new();
   match program.command.as_ref() {
+    "" | "help" => commands::help::run_command(),
     "version" => commands::version::run_command(),
-    "help" => todo!(),
 
     "init" => todo!(),
     "new" => todo!(),
@@ -31,6 +34,6 @@ fn main() {
     "run" => todo!(),
     "build" => todo!(),
     "test" => todo!(),
-    other => ieprintln!("Unknown command \"" other;? "\"")
-  }
+    other => ieprintln!("Unknown command: " other),
+  };
 }

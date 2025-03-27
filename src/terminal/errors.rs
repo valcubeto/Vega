@@ -1,27 +1,29 @@
 use std::process::exit;
-use std::sync::{ Mutex, atomic::Ordering::Relaxed };
-use crate::terminal::Stylize;
+// use std::sync::{ Mutex, atomic::Ordering::Relaxed };
+use crate::frontend::context::Program;
+use term_lab::styles::Stylize;
 
-pub static NOTES: Mutex<Vec<&'static str>> = Mutex::new(Vec::new());
+// pub static NOTES: Mutex<Vec<&'static str>> = Mutex::new(Vec::new());
 
-pub fn note(arg: &'static str) {
-  let mut notes = NOTES.lock().expect("Couldn't lock NOTES");
-  notes.push(arg);
-}
+// pub fn note(arg: &'static str) {
+//   let mut notes = NOTES.lock().expect("Couldn't lock NOTES");
+//   notes.push(arg);
+// }
 
-pub fn quit(ename: &str, msg: &str, file: &str, line: u32, column: u32) -> ! {
-  let notes = NOTES.lock().expect("Couldn't lock NOTES");
-  let contents = CONTENTS.lock().expect("Couldn't lock CONTENTS");
-  let curr_file = FILE.lock().expect("Couldn't lock FILE");
-  let curr_line = LINE.load(Relaxed);
-  let curr_column = COLUMN.load(Relaxed);
-  let tok_len = TOK_LEN.load(Relaxed);
+/// Quits the program with a nice error message
+pub fn quit(ename: &str, msg: &str, ctx: &mut Program) -> ! {
+  // let notes = NOTES.lock().expect("Couldn't lock NOTES");
+  // let contents = CONTENTS.lock().expect("Couldn't lock CONTENTS");
+  // let curr_file = FILE.lock().expect("Couldn't lock FILE");
+  // let curr_line = LINE.load(Relaxed);
+  // let curr_column = COLUMN.load(Relaxed);
+  // let tok_len = TOK_LEN.load(Relaxed);
 
-  eprintln!("{}: {}", ename.error(), msg);
-  for note in notes.iter() {
-    eprintln!("{}: {}", "Note".note(), note);
-  }
-  let mut lines = contents.lines();
+  ieprintln!(ename.error() ": " msg);
+  // for note in notes.iter() {
+  //   ieprintln!("Note".note() ": " note);
+  // }
+  // let mut lines = contents.lines();
   let line_text = lines.nth(curr_line - 1).unwrap_or_else(|| exit(1));
   if !line_text.trim().is_empty() {
     eprintln!();
