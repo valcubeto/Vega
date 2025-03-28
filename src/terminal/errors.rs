@@ -1,6 +1,6 @@
 use std::process::exit;
 // use std::sync::{ Mutex, atomic::Ordering::Relaxed };
-use crate::frontend::context::Program;
+use crate::context::Program;
 use term_lab::styles::Stylize;
 
 // pub static NOTES: Mutex<Vec<&'static str>> = Mutex::new(Vec::new());
@@ -38,8 +38,8 @@ pub fn quit(ename: &str, msg: &str, ctx: &mut Program) -> ! {
     eprintln!("{}", &line_text[padding..]);
     eprintln!("{}{}", " ".repeat(curr_column - 1 - padding), "^".repeat(tok_len).red().bold());
   }
-  eprintln!("  at {}:{}:{}", curr_file, curr_line, curr_column);
-  eprintln!("  at {}:{}:{}", file, line, column);
+  eprintln!("  at {}:{}:{}", ctx.curr_file, ctx.curr_line, ctx.curr_column);
+  eprintln!("  at {}:{}:{}", ctx.file, ctx.line, ctx.column);
   exit(1);
 }
 
