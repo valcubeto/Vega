@@ -16,8 +16,15 @@ pub struct Program {
 
 impl Program {
   pub fn new() -> Self {
-    // let mut argv = env::args();
-    // let this = expect_some!(argv.next() => "argv is empty!");
+    let flags = [
+      ("-n", "--no-flood"),
+      ("-p", "--plain"),
+      ("-d", "--debug"),
+      ("-q", "--quiet"),
+      ("-w", "--workspace"),
+    ];
+    let mut argv = env::args();
+    let this = expect!(argv.next() => "argv is empty!");
     // let command = ;
     // let args = ;
     // let flags = ;
@@ -27,6 +34,6 @@ impl Program {
     }
   }
   pub fn pos(&self) -> (usize, usize) {
-    //
+    todo!()
   }
 }

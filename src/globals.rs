@@ -1,18 +1,20 @@
-use std::sync::atomic::AtomicBool;
-
+use std::sync::atomic::{ AtomicBool, Ordering };
 
 pub static COLORING: AtomicBool = AtomicBool::new(true);
 pub static DEBUG: AtomicBool = AtomicBool::new(false);
 pub static QUIET: AtomicBool = AtomicBool::new(false);
 
+#[inline(always)]
 pub fn coloring_enabled() -> bool {
-  COLORING.load(std::sync::atomic::Ordering::Relaxed)
+  COLORING.load(Ordering::Relaxed)
 }
 
+#[inline(always)]
 pub fn debug_enabled() -> bool {
-  DEBUG.load(std::sync::atomic::Ordering::Relaxed)
+  DEBUG.load(Ordering::Relaxed)
 }
 
+#[inline(always)]
 pub fn quiet_enabled() -> bool {
-  QUIET.load(std::sync::atomic::Ordering::Relaxed)
+  QUIET.load(Ordering::Relaxed)
 }

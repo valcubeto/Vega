@@ -8,10 +8,11 @@ pub fn print_debug_msg(msg: &str, ctx: &mut Program) {
   if !debug_enabled() {
     return;
   }
-  let path = format!("{}:{}:{}", file, line, column);
+  let (line, column) = ctx.pos();
+  let path = iformat!(ctx.file;? ":" line ":" column);
   let date = Local::now().format("%d-%m-%y %H:%M:%S").to_string();
-  println!("[{} at {}, {}]", "Debug".info(), path.bold(), date.bold());
-  println!("{}", msg);
+  iprintln!("[" {"Debug".style().bold().cyan().build()} " at " path.bold() ", " date.bold() "]");
+  iprintln!(msg);
 }
 
 #[macro_export]
@@ -29,21 +30,20 @@ macro_rules! debug {
     use $crate::terminal::Stylize;
     #[allow(unused_mut)]
     let mut msg = vec![
-      $( format!("{} = {:?}", stringify!($arg).bold(), $arg)),+
+      $( format!("{} = {:?}", stringify!($arg).bold(), $arg) ),+
     ];
     debug_msg!("{}", msg.join("; "));
   }};
 }
 
-
 #[macro_export]
 macro_rules! debug_pretty {
-  ($($arg:expr),+ $(,)?) => {{ 
+  ($($arg:expr),+ $(,)?) => {{
     #[allow(unused_imports)]
     use $crate::terminal::Stylize;
     #[allow(unused_mut)]
     let mut msg = vec![
-      $( format!("{} = {:#?}", stringify!($arg).bold(), $arg)),+
+      $( format!("{} = {:#?}", stringify!($arg).bold(), $arg) ),+
     ];
     debug_msg!("{}", msg.join("; "));
   }};
