@@ -1,6 +1,6 @@
-use crate::frontend::context::Context;
+use crate::context::Program;
 
-pub fn run_command(ctx: &mut Context) {
+pub fn run_command(ctx: &mut Program) {
   /*
   let name = ctx.cwd.clone().push(expect_some!(ctx.args.first(), f!({"Usage".bold()}": vega new {name}")).into());
   let data = toml! {

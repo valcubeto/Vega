@@ -1,20 +1,26 @@
 use std::sync::atomic::{ AtomicBool, Ordering };
 
-pub static COLORING: AtomicBool = AtomicBool::new(true);
-pub static DEBUG: AtomicBool = AtomicBool::new(false);
-pub static QUIET: AtomicBool = AtomicBool::new(false);
-
-#[inline(always)]
-pub fn coloring_enabled() -> bool {
-  COLORING.load(Ordering::Relaxed)
+pub struct GlobalState {
+  value: AtomicBool
 }
 
-#[inline(always)]
-pub fn debug_enabled() -> bool {
-  DEBUG.load(Ordering::Relaxed)
+impl GlobalState {
+  #[inline]
+  pub const fn new(value: bool) -> Self {
+    Self {
+      value: AtomicBool::new(value)
+    }
+  }
+  #[inline]
+  pub fn set(&self, value: bool) {
+    self.value.store(value, Ordering::Relaxed);
+  }
+  #[inline]
+  pub fn enabled(&self) -> bool {
+    self.value.load(Ordering::Relaxed)
+  }
 }
 
-#[inline(always)]
-pub fn quiet_enabled() -> bool {
-  QUIET.load(Ordering::Relaxed)
-}
+pub static COLOR: GlobalState = GlobalState::new(true);
+pub static DEBUG: GlobalState = GlobalState::new(false);
+pub static QUIET: GlobalState = GlobalState::new(false);

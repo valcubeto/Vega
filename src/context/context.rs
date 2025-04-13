@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::env;
 
 pub struct Program {
@@ -9,9 +9,14 @@ pub struct Program {
   /// run
   pub command: Box<str>,
   /// main.sny
-  pub file: Box<Path>,
+  pub input: Option<Box<Path>>,
   /// 0
   pub index: u32,
+}
+
+pub struct Position {
+  pub line: usize,
+  pub column: usize,
 }
 
 impl Program {
@@ -24,16 +29,21 @@ impl Program {
       ("-w", "--workspace"),
     ];
     let mut argv = env::args();
-    let this = expect!(argv.next() => "argv is empty!");
-    // let command = ;
+    let this = crate::expect!(argv.next() => argument_err!("argv is empty!"));
+    let this = PathBuf::from(this).into_boxed_path();
+    let command = argv.next().unwrap_or("".into()).into_boxed_str();
     // let args = ;
     // let flags = ;
     Self {
       cwd: env::current_dir().unwrap().into_boxed_path(),
-      command: env::args().nth(1).unwrap().into_boxed_str(),
+      this,
+      command,
+      input: None,
+      index: 0
     }
   }
-  pub fn pos(&self) -> (usize, usize) {
+  /// Get the current file position based on the index.
+  pub fn pos(&self) -> Position {
     todo!()
   }
 }

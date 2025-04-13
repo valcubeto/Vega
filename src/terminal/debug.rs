@@ -1,15 +1,15 @@
 use std::sync::atomic::Ordering::Relaxed;
 use chrono::Local;
 use term_lab::styles::Stylize;
-use crate::globals::debug_enabled;
-use crate::context::Program;
+use crate::globals::DEBUG;
+use crate::context::{ Program, Position };
 
 pub fn print_debug_msg(msg: &str, ctx: &mut Program) {
-  if !debug_enabled() {
+  if !DEBUG.enabled() {
     return;
   }
-  let (line, column) = ctx.pos();
-  let path = iformat!(ctx.file;? ":" line ":" column);
+  let Position { line, column } = ctx.pos();
+  let path = iformat!(ctx.input;? ":" line ":" column);
   let date = Local::now().format("%d-%m-%y %H:%M:%S").to_string();
   iprintln!("[" {"Debug".style().bold().cyan().build()} " at " path.bold() ", " date.bold() "]");
   iprintln!(msg);
@@ -19,7 +19,7 @@ pub fn print_debug_msg(msg: &str, ctx: &mut Program) {
 macro_rules! debug_msg {
   ($($arg:expr),*) => {{
     use $crate::terminal::print_debug_msg;
-    print_debug_msg(&format!($($arg),*), file!(), line!(), column!());
+    print_debug_msg(&iformat!($($arg),*), file!(), line!(), column!());
   }};
 }
 
