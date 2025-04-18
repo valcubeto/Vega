@@ -1,0 +1,116 @@
+
+// ParenLeft, ParenRight
+()
+// BracketLeft, BracketRight
+[]
+// CurlyLeft, CurlyRight
+{}
+// Dot, Comma
+. ,
+// Colon, Semicolon
+: ;
+// Hash, At
+# @
+// Plus, Minus
++ -
+// DoublePlus, DoubleMinus
+++ --
+// Star
+*
+// Slash, Percent
+/ %
+// Tilde, Amp, Pipe, ..., DoubleLeftAngle, DoubleRightAngle
+~ & | ^ << >>
+// Exclamation, DoubleAmp, DoublePipe
+! && ||
+// DoubleEqual, NotEqual, AngleLeft, AngleRight, LessEqual, GreaterEqual, Diamond
+== != < > <= >= <>
+// Equal
+=
+// AddEqual, SubEqual
++= -=
+// MulEqual
+*=
+// DivEqual, ModEqual
+/= %=
+// BitAndEqual, BitOrEqual, XorEqual, LShiftEqual, RShiftEqual
+&= |= ^= <<= >>=
+// QuestionMark
+?
+
+
+// Char
+'\n'
+// Int
+b'a'
+// String
+"asd\r\n\b\t\e\0\u{32}"
+$"asd"$
+r"\n"
+// List<Int>
+b"asd"
+// CString
+c"asd"
+// FString
+f"{asd}"
+
+// Int
+123
+-123
++123
+00123
+1_234
+// BinInt
+0b0000_1111
+// HexInt
+0xff_FF_00
+// Float
+1.234
+0.123_456
+// Scientific
+1e8    // -> 1 * 10.pow(8)
+
+// Keyword
+bitset
+const
+class
+enum
+fun
+interface
+let
+macro
+mod
+state
+struct
+type
+var
+as
+async
+await
+break
+case
+continue
+defer
+else
+for
+gen
+hidden
+if
+impl
+in
+loop
+match
+return
+shared
+take
+unsafe
+use
+where
+while
+
+// Ident
+ident
+// MacroName
+ident!
+// MacroVar
+$ident
