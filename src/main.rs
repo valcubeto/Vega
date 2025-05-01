@@ -1,3 +1,5 @@
+#![macro_use]
+
 #[macro_use]
 extern crate ifmt;
 
@@ -13,13 +15,13 @@ mod globals;
 mod context;
 #[path = "commands/commands.rs"]
 mod commands;
-#[macro_use]
 mod macros;
 
 use context::Program;
 
 fn main() {
   let mut program = Program::new();
+  panic!();
   match program.command.as_ref() {
     "" => commands::default::run_command(),
     "version" => commands::version::run_command(),

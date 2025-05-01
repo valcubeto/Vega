@@ -30,32 +30,32 @@ pub fn quit(ename: &str, msg: &str, /* ctx: &mut Program, */ src_file: &str, src
 
 #[macro_export]
 macro_rules! internal_err {
-  ($($arg:expr),*) => {{
+  ($($arg:expr)*) => {{
     use $crate::terminal::quit;
-    quit("Internal error", &format!($($arg),*), file!(), line!(), column!());
+    quit("Internal error", &iformat!($($arg)*), file!(), line!(), column!());
   }};
 }
 
 #[macro_export]
 macro_rules! os_err {
-  ($($arg:expr),*) => {{
+  ($($arg:expr)*) => {{
     use $crate::terminal::quit;
-    quit("OS error", &format!($($arg),*), file!(), line!(), column!());
+    quit("OS error", &iformat!($($arg)*), file!(), line!(), column!());
   }};
 }
 
 #[macro_export]
 macro_rules! argument_err {
-  ($($arg:expr),*) => {{
+  ($($arg:expr)*) => {{
     use $crate::terminal::quit;
-    quit("Argument error", &format!($($arg),*), file!(), line!(), column!());
+    quit("Argument error", &iformat!($($arg)*), file!(), line!(), column!());
   }};
 }
 
 #[macro_export]
 macro_rules! syntax_err {
-  ($($arg:expr),*) => {{
+  ($($arg:expr)*) => {{
     use $crate::terminal::quit;
-    quit("Syntax error", &format!($($arg),*), file!(), line!(), column!());
+    quit("Syntax error", &iformat!($($arg)*), file!(), line!(), column!());
   }};
 }
