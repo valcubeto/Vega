@@ -21,12 +21,15 @@ use context::Program;
 
 fn main() {
   let mut program = Program::new();
-  panic!();
+  todo!();
   match program.command.as_ref() {
-    "" => commands::default::run_command(),
-    "version" => commands::version::run_command(),
-    "help" => commands::help::run_command(),
+    // These should be loaded anyways
+    "--version" => commands::version::run_command(),
 
+    // Bad approach: this loads ALL the commands, even if they are not used.
+    // TODO: change to an external-command-based approach, like Cargo does.
+    "" => commands::default::run_command(),
+    "help" => commands::help::run_command(),
     // "init" => commands::init::run_command(),
     "create" => commands::create::run_command(&mut program),
     // "add" => commands::add::run_command(),
