@@ -1,0 +1,22 @@
+
+macro arith_impl!($i: Ident $f: Ident) {
+  interface $i<T = Self, Out = Self> {
+    fun $f(other: &T): Out with &Self
+  }
+}
+
+arith_impl!(Add add_op)
+arith_impl!(Sub sub_op)
+arith_impl!(Mul mul_op)
+arith_impl!(Div div_op)
+arith_impl!(Mod mod_op)
+
+interface Not {
+  fun not_op(): Self
+}
+
+impl Not for Bool {
+  fun not_op(): Bool {
+    return self XOR 1
+  }
+}

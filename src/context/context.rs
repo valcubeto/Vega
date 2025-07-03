@@ -1,5 +1,6 @@
 use std::path::{ Path, PathBuf };
 use std::env;
+use crate::{ some, ok };
 
 pub struct Program {
   /// Path("/home")
@@ -41,7 +42,7 @@ impl Program {
     // let args = ;
     // let flags = ;
     Self {
-      cwd: crate::ok!(env::current_dir() => os_err!("cannot get the current directory")).into_boxed_path(),
+      cwd: ok!(env::current_dir() => os_err!("cannot get the current directory")).into_boxed_path(),
       this,
       command,
       input: Box::from(""),

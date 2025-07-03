@@ -35,7 +35,6 @@ macro_rules! internal_err {
     quit("Internal error", &iformat!($($arg)*), file!(), line!(), column!());
   }};
 }
-
 #[macro_export]
 macro_rules! os_err {
   ($($arg:expr)*) => {{
