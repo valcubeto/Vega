@@ -1,7 +1,7 @@
 
-macro arith_impl!($i: Ident $f: Ident) {
-  interface $i<T = Self, Out = Self> {
-    fun $f(other: &T): Out with &Self
+macro arith_impl!($I: Ident $f: Ident) {
+  interface $I<T = Self, Out = Self> {
+    fun $f(other: &T): Out takes &Self
   }
 }
 
